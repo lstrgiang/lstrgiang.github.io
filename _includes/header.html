@@ -1,0 +1,22 @@
+{% if page.title == "/dev/null"%}{% assign showHeader = true %}{% endif %}
+
+{% if showHeader == true %}
+<!--site.external-image-->
+    <header class="header-home {% if site.animation %}animated{% endif %}">
+            <span class="link">
+                {% assign isOddDate = site.time | date: '%d' | modulo: 2 %}
+                {% if isOddDate == 1 %}
+                <img class="selfie" alt="{{ site.name }}" style="width:100px;height:100px" src="{{ site.picture }}" />
+                {% else %}
+                <img alt="{{ site.name }}" style="width:80%;height:auto" src="{{ site.url }}/assets/banner-blog.png" />
+                {% endif %}
+            </span>
+
+        <h1 class="title"><span id="terminal">{{ site.itname }}</span></h1>
+        <h2 class="description">{{ site.bio }}</h2>
+
+        {% include social-links.html %}
+    </header>
+{% endif %}
+
+{% include nav.html %}
