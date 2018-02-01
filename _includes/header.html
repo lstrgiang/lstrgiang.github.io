@@ -4,12 +4,8 @@
 <!--site.external-image-->
     <header class="header-home {% if site.animation %}animated{% endif %}">
             <span class="link">
-                {% assign isOddDate = site.time | date: '%d' | modulo: 2 %}
-                {% if isOddDate == 1 %}
                 <img class="selfie" alt="{{ site.name }}" style="width:100px;height:100px" src="{{ site.picture }}" />
-                {% else %}
-                <img alt="{{ site.name }}" style="width:80%;height:auto" src="{{ site.url }}/banner-blog.png" />
-                {% endif %}
+                <!--<img alt="{{ site.name }}" style="width:80%;height:auto" src="{{ site.url }}/banner-blog.png" />-->
             </span>
 
         <h1 class="title"><span id="terminal">{{ site.itname }}</span></h1>
@@ -17,5 +13,6 @@
 
         {% include social-links.html %}
     </header>
+    {% include nav.html %}
 {% endif %}
 

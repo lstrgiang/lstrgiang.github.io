@@ -733,7 +733,7 @@ pre {
   top: 2px;
   margin: 0;
   width: 25%;
-  float: right;
+  float: left;
   font-weight: 300;
   color: #aaa;
   text-align: right;
@@ -933,7 +933,7 @@ pre {
 .nav-home > .list > .item > .link {
   display: inline-block;
   font-weight: 300;
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding: 20px 10px;
   text-decoration: none;
 }
@@ -951,13 +951,14 @@ pre {
 }
 .nav-home {
   margin-top: 40px;
-  text-align: center;
+  text-align: left;
 }
 .nav-home > .list {
   padding: 0;
+  text-align: left;
 }
 .nav-home > .list > .item > .link {
-  font-size: 2rem;
+  font-size: 1rem;
   padding: 7px 15px;
   margin: 0;
   border-radius: 4%;

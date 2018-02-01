@@ -1,0 +1,21 @@
+<nav class="nav-home">
+        <!--giangle@home:~$ ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(master)-->
+    <ul class="list">
+        {% if page.title != "Home" %}
+            <li class="item">
+                <span>
+                drwx------@   3 giangle  staff   102B Feb 22 22:02 
+                <a class="link" href="{{ site.url }}/">home</a>
+                </span>
+            </li>
+        {% endif %}
+
+        
+            <li class="item">
+                <span>
+                drwx------@   3 giangle  staff   102B Sep 28 28:09 
+                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">resume</a>
+                </span>
+            </li>
+    </ul>
+</nav>
