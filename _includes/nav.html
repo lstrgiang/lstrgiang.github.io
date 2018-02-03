@@ -1,5 +1,14 @@
-<nav class="nav-home">
-        <!--giangle@home:~$ ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(master)-->
+ <nav class="nav-home">
+    <ul class="cmd-list">
+        <li class="cmd-head">
+            giangle@home:~$
+        </li>
+        <li class="writer">
+            <main class="prompt">
+            <p id="cmd-content" class=""></p>
+            </main>
+        </li>
+    </ul>
     <ul class="list">
         {% if page.title != "Home" %}
             <li class="item">
@@ -17,5 +26,7 @@
                 <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">resume</a>
                 </span>
             </li>
+
     </ul>
 </nav>
+

@@ -75,13 +75,13 @@ width: normal
 
 # do you want some animations?
 animation: true
-
 plugins:
   - jekyll-seo-tag
   - jekyll-gist
   - jekyll-feed
   - jemoji
   - jekyll-admin
+  - jekyll-redirect-from
 
 jekyll-mentions:
     base_url: https://github.com

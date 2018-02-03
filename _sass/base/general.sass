@@ -6,21 +6,27 @@
 		content: "_"
 		opacity: 0
 		animation: cursor 1s infinite
+.text
+	display: inline-block
+	margin-left: 3px
+.input
+	display: inline-block
+div
+	> .input
+		caret-shape: underscore
 
+.output
+	display: block
+	text-align: left
 .description
 	font-family: monospace
+[contenteditable]
+	&:focus
+		outline: 0px solid transparent 
 
-@keyframes cursor
-	0%
-		opacity: 0
-	40%
-		opacity: 0
+@keyframes PulseAttention
 	50%
-		opacity: 1
-	90%
-		opacity: 1
-	100% 
-		opacity: 0
+		border-color: red
 
 body, html
 	font-size: 62.5%
@@ -160,3 +166,9 @@ pre
 
 .wrapper-large
 	max-width: 810px
+
+.loader
+	margin-bottom: 1em 
+
+.loader-increment
+	color: #00b200

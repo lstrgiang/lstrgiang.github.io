@@ -1,5 +1,4 @@
 {% if page.title == "/dev/null"%}{% assign showHeader = true %}{% endif %}
-
 {% if showHeader == true %}
 <!--site.external-image-->
     <header class="header-home {% if site.animation %}animated{% endif %}">
@@ -8,12 +7,110 @@
                 <!--<img alt="{{ site.name }}" style="width:80%;height:auto" src="{{ site.url }}/banner-blog.png" />-->
             </span>
 
-        <h1 class="title"><span id="terminal">{{ site.itname }}</span></h1>
+            <!--<h1 class="title"><div class="terminal" ></div></h1>-->
         <h2 class="description">{{ site.bio }}</h2>
-
+    <div class="terminal" style="display:inline-block">
+        <p class="text">giangle@home $ </p>
+        <div autocapitalize="off" autocorrect="off" autocomplete="off" class="input" contenteditable type="text">&nbsp;
+        </div>
+    </div>
+    <output class="output">
+    </output>
         {% include social-links.html %}
         {% seo %}
     </header>
-    {% include nav.html %}
 {% endif %}
+{% assign show="good morning" %}
+<script>
+var path = '';
+function processCommand(input, output) {
+    if (input == 'clear') {
+        output = '';
+    }
+    else if (input == 'll') {
+        output = window['comandll']();
+    } 
+    else if (input == 'whoami') {
+        output = 'My name is Giang, a developer and a computer scientist.';
+    }
+    else if (input.startsWith('cd')) {
+        output = commandcd(input);
+    }
+    else if (input == 'help') {
+        output = ' - whoami: Description about author<br>';
+        output += ' - ll:    Show list of pages<br>' ;
+        output += ' - cd:    Navigate to the page<br>';
+        output += ' - clear: Clear the result<br>';
+        output += ' - help:  Show commands<br>';
+    }
+    else {
+        output = '\''+input+'\''+' command not found. Try -help';
+    }
+    printCommand(output);
+}
+function printCommand(output) {
+    $('.output').val('');
+    if (output != null && output.length > 0) {
+        $('.output').append(output + '<br>');
+        $('.output').append('<br>');
+    }
+}
+function comandll() {
+    var sites = {{ site.pages | jsonify}};
+    var prefix = "drwx------@   3 giangle  staff   102B Feb 22 22:02 ";
+    var output = '';
+    for ( i = 0; i < sites.length; i++ ) {
+        console.log(sites[i]);
+        if (sites[i]['dir'] != '/' || sites[i]['name'] == '404.html' || sites[i]['dirname'] == undefined) {
+            continue;
+        }
+        output +=  prefix + '<a href=' + "{{site.url/}}" + sites[i]['url'] +'>' + sites[i]['dirname'] + '</a><br>';
+        console.log(output);
+    }
+    return output;
+}
+function commandcd(input) {
+    var sites = {{ site.pages || jsonify }};
+    var dirname = input.split(" ", 2);
+    var dir = null;
+    if (dirname.length <= 1) {
+        return '';
+    }
+    for ( i = 0; i < sites.length; i++ ) {
+        if (sites[i]['dirname'] === dirname[1]) {
+            dir = i;
+            break;
+        }
+    }
+    if (dir != null && sites[dir] !== null) {
+        window.location= "{{ site.url }}" + sites[dir]['url'];
+    } else {
+        return "cd: no such file or directory: " + dirname[1];
+    }
+}
+$(function(){
+    $('.input').focus();
+    $('.input').focus().on({
+        keydown: function(e){
+            var input = $(this).text();
+            if (e.which != 8 && input.length > 20) {
+                e.preventDefault();
+            }
+            else if(e.which == 13) {
+                var output = '', defaultBehavior = true;
+                input = input.trim();
+                e.preventDefault();
+                processCommand(input);
+                $(this).html('&nbsp;');
+            }
+        }
+    });
+});
+</script>
+<!--$(function() {-->
+    <!--$('.input').focus().on({-->
+        <!--keydown: function(e) {-->
 
+        <!--}-->
+    <!--});-->
+<!--});-->
