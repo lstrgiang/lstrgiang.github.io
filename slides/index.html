@@ -1,17 +1,17 @@
 ---
 layout: page
 title: Slides
-description:
-  
-permalink: /presentations/
+description: General pages for slides
+permalink: /slides/
 ---
 
 <section class="listing">
   <ul>
     {% for page in site.pages %}
       {% if page.layout == 'slide' and page.title %}
-        <li>
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
+        <li class="item">
+            drwx------@   3 giangle  staff   102B Feb 22 22:02 
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
             {{ page.title }}
           </a>
         </li>
