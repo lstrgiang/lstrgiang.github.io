@@ -271,6 +271,8 @@ DEPENDENCIES
   github-pages
   html-proofer
   jekyll-admin
+  jekyll-redirect-from
+  jekyll-seo-tag
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
